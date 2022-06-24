@@ -15,9 +15,6 @@ const defaultAxios = Axios.create({
     "Sec-Fetch-Site": "same-origin",
     "X-CSRF-Token": "m3DJLl2rHPKpwEVQEOMvMFNI/QR1JrTEnrLBvfQ23F0=",
     "X-Requested-With": "XMLHttpRequest",
-    "Sec-Fetch-Dest": "empty",
-    "Sec-Fetch-Mode": "cors",
-    "sec-ch-ua-mobile": "?0",
   },
 });
 defaultAxios.interceptors.response.use(
@@ -36,9 +33,9 @@ export const getTasks = ({
   path = {},
 } = {}) => {
   return defaultAxios({
-    url: `https://dhiwise-459662296123098611.myfreshworks.com/crm/sales/tasks`,
+    url: `https://dhiwise-459662296123098611.myfreshworks.com//crm/sales/api/tasks`,
     method: "get",
-    params: { filter: "open'", ...params },
+    params: { filter: "open", ...params },
     headers,
     data,
   });

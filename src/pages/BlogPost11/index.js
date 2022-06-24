@@ -19,7 +19,7 @@ const BlogPost11Page = () => {
   }, []);
 
   function callApi() {
-    const req = { params: { filter: "open" } };
+    const req = {};
     getTasks(req)
       .then((res) => {
         setapiData(res);
