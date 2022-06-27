@@ -17,17 +17,17 @@ import useForm from "simple-react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 
 const ContactusPage = () => {
-  const [apiData, setapiData] = React.useState();
+  const [apiData1, setapiData1] = React.useState();
   const form = useForm({
     contact: { first_name: "", last_name: "", mobile_number: "", emails: "" },
   });
   const navigate = useNavigate();
 
-  function callApi(data) {
+  function callApi1(data) {
     const req = { data: { ...data } };
     postContacts(req)
       .then((res) => {
-        setapiData(res);
+        setapiData1(res);
         form.handleChange("contact.first_name", res?.contact?.first_name);
         form.handleChange("contact.last_name", res?.contact?.last_name);
         form.handleChange("contact.emails", res?.contact?.email);
@@ -146,7 +146,7 @@ const ContactusPage = () => {
               <Button
                 className="common-pointer bg-deep_purple_A200 font-normal lg:mt-[23px] xl:mt-[26px] mt-[30px] 3xl:mt-[36px] not-italic lg:pb-[19px] xl:pb-[22px] pb-[25.55px] 2xl:pb-[25px] 3xl:pb-[30px] lg:pt-[20px] xl:pt-[23px] pt-[26.55px] 2xl:pt-[26px] 3xl:pt-[31px] rounded-radius5 lg:text-[14px] xl:text-[16px] text-[18px] 3xl:text-[21px] text-center text-white_A700 w-[25%]"
                 onClick={() => {
-                  form.handleSubmit(callApi);
+                  form.handleSubmit(callApi1);
                 }}
               >{`Send Message`}</Button>
             </Column>
