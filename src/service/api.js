@@ -26,23 +26,25 @@ defaultAxios.interceptors.response.use(
   }
 );
 
-export const postContacts = ({
+export const postTasks = ({
   data = {},
   headers = {},
   params = {},
   path = {},
 } = {}) => {
   return defaultAxios({
-    url: `https://dhiwise-459662296123098611.myfreshworks.com/crm/sales/api/contacts`,
+    url: `https://dhiwise-459662296123098611.myfreshworks.com/crm/sales/api/tasks`,
     method: "post",
     params,
     headers,
     data: {
-      contact: {
-        first_name: "harsh",
-        last_name: "tala (sample)",
-        mobile_number: "1-926-555-9503",
-        emails: "rtala@gmail.com",
+      task: {
+        title: "Sample Task5",
+        description: "This is just a sample task4.",
+        due_date: "18/7/2000",
+        owner_id: "70000078627",
+        outcome_id: "70002087555",
+        task_type_id: "70000179274",
       },
       ...data,
     },

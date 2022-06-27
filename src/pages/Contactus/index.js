@@ -11,28 +11,30 @@ import {
   Button,
 } from "components";
 import { useNavigate } from "react-router-dom";
-import { postContacts } from "service/api";
+import { postTasks } from "service/api";
 import "react-toastify/dist/ReactToastify.css";
 import useForm from "simple-react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 
 const ContactusPage = () => {
-  const [apiData1, setapiData1] = React.useState();
-  const form = useForm({
-    contact: { first_name: "", last_name: "", mobile_number: "", emails: "" },
-  });
+  const [apiData, setapiData] = React.useState();
+  const form = useForm({ task: { title: "", description: "", due_date: "" } });
   const navigate = useNavigate();
 
-  function callApi1(data) {
-    const req = { data: { ...data } };
-    postContacts(req)
+  function callApi(data) {
+    const req = {
+      data: {
+        ...data,
+        "task, owner_id": "70000078627",
+        "task, outcome_id": "70002087555",
+        "task, task_type_id": "70000179274",
+      },
+    };
+    postTasks(req)
       .then((res) => {
-        setapiData1(res);
-        form.handleChange("contact.first_name", res?.contact?.first_name);
-        form.handleChange("contact.last_name", res?.contact?.last_name);
-        form.handleChange("contact.emails", res?.contact?.email);
-        form.handleChange("contact.mobile_number", res?.contact?.mobile_number);
-        toast.success("contact successfully added.");
+        setapiData(res);
+
+        toast.success("success");
       })
       .catch((err) => {
         console.error(err);
@@ -108,18 +110,14 @@ const ContactusPage = () => {
               <Input
                 className="placeholder:bg-transparent bg-transparent border border-gray_300 border-solid font-light lg:pl-[19px] xl:pl-[22px] pl-[25px] 3xl:pl-[30px] lg:py-[17px] xl:py-[20px] py-[23.06px] 2xl:py-[23px] 3xl:py-[27px] rounded-radius5 lg:text-[18px] xl:text-[21px] text-[24px] 3xl:text-[28px] placeholder:text-gray_400 text-gray_400 text-left w-[100%]"
                 onChange={(e) => {
-                  form.handleChange("contact.first_name", e.target.value);
+                  form.handleChange("task.title", e.target.value);
                 }}
-                value={form?.values?.contact?.first_name}
+                value={form?.values?.task?.title}
                 name="field"
                 placeholder={`Your Name`}
               ></Input>
               <Input
                 className="placeholder:bg-transparent bg-transparent border border-gray_300 border-solid font-light lg:pl-[19px] xl:pl-[22px] pl-[25px] 3xl:pl-[30px] lg:py-[17px] xl:py-[20px] py-[23.06px] 2xl:py-[23px] 3xl:py-[27px] rounded-radius5 lg:text-[18px] xl:text-[21px] text-[24px] 3xl:text-[28px] placeholder:text-gray_400 text-gray_400 text-left w-[100%]"
-                onChange={(e) => {
-                  form.handleChange("contact.last_name", e.target.value);
-                }}
-                value={form?.values?.contact?.last_name}
                 name="field"
                 placeholder={`Your Email`}
               ></Input>
@@ -128,25 +126,25 @@ const ContactusPage = () => {
               <Input
                 className="placeholder:bg-transparent bg-transparent border border-gray_300 border-solid font-light lg:pl-[19px] xl:pl-[22px] pl-[25px] 3xl:pl-[30px] lg:py-[17px] xl:py-[20px] py-[23.06px] 2xl:py-[23px] 3xl:py-[27px] rounded-radius5 lg:text-[18px] xl:text-[21px] text-[24px] 3xl:text-[28px] placeholder:text-gray_400 text-gray_400 text-left w-[93%]"
                 onChange={(e) => {
-                  form.handleChange("contact.emails", e.target.value);
+                  form.handleChange("task.due_date", e.target.value);
                 }}
-                value={form?.values?.contact?.emails}
+                value={form?.values?.task?.due_date}
                 name="field"
                 placeholder={`Your Subject`}
               ></Input>
               <TextArea
                 className="placeholder:bg-transparent bg-transparent border border-gray_300 border-solid font-light lg:mt-[23px] xl:mt-[26px] mt-[30px] 3xl:mt-[36px] lg:pb-[28px] xl:pb-[32px] pb-[37.06px] 2xl:pb-[37px] 3xl:pb-[44px] lg:pl-[19px] xl:pl-[22px] pl-[25px] 3xl:pl-[30px] lg:pt-[16px] xl:pt-[18px] pt-[21.06px] 2xl:pt-[21px] 3xl:pt-[25px] rounded-radius5 lg:text-[18px] xl:text-[21px] text-[24px] 3xl:text-[28px] placeholder:text-gray_400 text-gray_400 text-left w-[93%]"
                 onChange={(e) => {
-                  form.handleChange("contact.mobile_number", e.target.value);
+                  form.handleChange("task.description", e.target.value);
                 }}
-                value={form?.values?.contact?.mobile_number}
+                value={form?.values?.task?.description}
                 name="field"
                 placeholder={`Description`}
               ></TextArea>
               <Button
                 className="common-pointer bg-deep_purple_A200 font-normal lg:mt-[23px] xl:mt-[26px] mt-[30px] 3xl:mt-[36px] not-italic lg:pb-[19px] xl:pb-[22px] pb-[25.55px] 2xl:pb-[25px] 3xl:pb-[30px] lg:pt-[20px] xl:pt-[23px] pt-[26.55px] 2xl:pt-[26px] 3xl:pt-[31px] rounded-radius5 lg:text-[14px] xl:text-[16px] text-[18px] 3xl:text-[21px] text-center text-white_A700 w-[25%]"
                 onClick={() => {
-                  form.handleSubmit(callApi1);
+                  form.handleSubmit(callApi);
                 }}
               >{`Send Message`}</Button>
             </Column>

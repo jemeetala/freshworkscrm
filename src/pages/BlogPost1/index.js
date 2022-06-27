@@ -14,17 +14,17 @@ import {
 } from "components";
 
 const BlogPost1Page = () => {
-  const [apiData, setapiData] = React.useState();
+  const [apiData1, setapiData1] = React.useState();
   React.useEffect(() => {
-    callApi();
+    callApi1();
   }, []);
   const navigate = useNavigate();
 
-  function callApi() {
+  function callApi1() {
     const req = {};
     getTasks(req)
       .then((res) => {
-        setapiData(res);
+        setapiData1(res);
       })
       .catch((err) => {
         console.error(err);
@@ -130,7 +130,7 @@ const BlogPost1Page = () => {
         </Column>
         <Column className="items-end lg:mt-[50px] xl:mt-[57px] mt-[65px] 3xl:mt-[78px] lg:pl-[115px] xl:pl-[131px] pl-[148px] 3xl:pl-[177px] lg:pr-[63px] xl:pr-[72px] pr-[82px] 3xl:pr-[98px] w-[100%]">
           <List className="gap-[0] min-h-[auto] w-[84%]" orientation="vertical">
-            {apiData?.tasks?.map((apiDataEle) => {
+            {apiData1?.tasks?.map((apiData1Ele) => {
               return (
                 <Row className="items-start justify-between lg:my-[21px] xl:my-[24px] my-[28px] 3xl:my-[33px] w-[100%]">
                   <Column className="items-start justify-start lg:mb-[17px] xl:mb-[19px] mb-[22px] 3xl:mb-[26px] w-[32%]">
@@ -144,10 +144,10 @@ const BlogPost1Page = () => {
                       </Stack>
                     </Column>
                     <Text className="font-cabin font-medium leading-[normal] lg:ml-[31px] xl:ml-[36px] ml-[41px] 3xl:ml-[49px] lg:mt-[14px] xl:mt-[16px] mt-[19px] 3xl:mt-[22px] lg:text-[18px] xl:text-[21px] text-[24px] 3xl:text-[28px] text-bluegray_900 text-left w-[89%]">
-                      {apiDataEle?.title}
+                      {apiData1Ele?.title}
                     </Text>
                     <Text className="font-mulish font-semibold leading-[normal] lg:ml-[32px] xl:ml-[37px] ml-[42px] 3xl:ml-[50px] lg:mt-[17px] xl:mt-[19px] mt-[22px] 3xl:mt-[26px] lg:text-[10px] xl:text-[12px] text-[14px] 3xl:text-[16px] text-bluegray_900 text-left w-[86%]">
-                      {apiDataEle?.description}
+                      {apiData1Ele?.description}
                     </Text>
                     <Column className="font-mulish lg:mt-[42px] xl:mt-[48px] mt-[54px] 3xl:mt-[64px] w-[100%]">
                       <Row className="items-center justify-start lg:pl-[24px] xl:pl-[27px] pl-[31px] 3xl:pl-[37px] lg:pr-[49px] xl:pr-[56px] pr-[63px] 3xl:pr-[75px] w-[100%]">
@@ -161,7 +161,7 @@ const BlogPost1Page = () => {
                         <Text className="font-semibold xl:mb-[12px] mb-[14px] 3xl:mb-[16px] lg:ml-[16px] xl:ml-[18px] ml-[21px] 3xl:ml-[25px] xl:mt-[11px] mt-[13px] 3xl:mt-[15px] lg:my-[10px] xl:text-[10px] text-[12px] 3xl:text-[14px] lg:text-[9px] text-bluegray_500 text-left w-[auto]">{`Wade Warren`}</Text>
                         <Text className="font-semibold lg:ml-[6px] xl:ml-[7px] ml-[8px] 3xl:ml-[9px] xl:my-[10px] my-[12px] 3xl:my-[14px] lg:my-[9px] lg:text-[10px] xl:text-[12px] text-[14px] 3xl:text-[16px] text-bluegray_200 text-left w-[auto]">{`I`}</Text>
                         <Text className="font-semibold lg:ml-[12px] xl:ml-[14px] ml-[16px] 3xl:ml-[19px] lg:my-[10px] xl:my-[11px] my-[13px] 3xl:my-[15px] xl:text-[10px] text-[12px] 3xl:text-[14px] lg:text-[9px] text-bluegray_500 text-left w-[auto]">
-                          {apiDataEle?.due_date}
+                          {apiData1Ele?.due_date}
                         </Text>
                       </Row>
                     </Column>
