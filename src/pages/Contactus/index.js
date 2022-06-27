@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { postTasks } from "service/api";
 import "react-toastify/dist/ReactToastify.css";
 import useForm from "simple-react-hook-form";
+import * as Task_constants from "constants/Task_constants";
 import { ToastContainer, toast } from "react-toastify";
 
 const ContactusPage = () => {
@@ -25,9 +26,9 @@ const ContactusPage = () => {
     const req = {
       data: {
         ...data,
-        "task, owner_id": "70000078627",
-        "task, outcome_id": "70002087555",
-        "task, task_type_id": "70000179274",
+        "task.owner_id": Task_constants.consttask.owner_id,
+        "task.outcome_id": Task_constants.consttask.outcome_id,
+        "task.task_type_id": Task_constants.consttask.task_type_id,
       },
     };
     postTasks(req)
