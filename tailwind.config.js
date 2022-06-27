@@ -1,0 +1,53 @@
+module.exports = {
+  mode: "jit",
+  content: [
+    "./src/**/**/*.{js,ts,jsx,tsx,html,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,html,mdx}",
+  ],
+  darkMode: "class",
+  theme: {
+    screens: { lg: "1120px", xl: "1281px", "2xl": "1441px", "3xl": "1729px" },
+    extend: {
+      colors: {
+        gray_400: "#c7c7c7",
+        white_A700_3f: "#ffffff3f",
+        gray_900: "#14141b",
+        gray_200: "#eeeeee",
+        gray_300: "#dadada",
+        bluegray_900: "#25313c",
+        bluegray_600: "#4c5d77",
+        black_900: "#000000",
+        bluegray_500: "#6d7d8b",
+        indigo_900_26: "#00006d26",
+        bluegray_300: "#9baabf",
+        bluegray_200: "#bbc8d4",
+        indigo_900: "#00006d",
+        deep_purple_A200: "#7737ff",
+        black_900_19: "#00000019",
+        pink_300: "#fb5392",
+        white_A700: "#ffffff",
+      },
+      fontFamily: {
+        nunitosans: "Nunito Sans",
+        publicsans: "Public Sans",
+        merriweather: "Merriweather",
+        mulish: "Mulish",
+        cabin: "Cabin",
+      },
+      letterSpacing: { ls1: "1px" },
+      boxShadow: {
+        bs1: "0px 20px  50px 0px #00000019",
+        bs: "0px 25px  70px 0px #00000019",
+      },
+      borderRadius: {
+        radius5: "5px",
+        radius10: "10px",
+        radius30: "30px",
+        radius50: "50%",
+        radius195: "19.5px",
+      },
+      opacity: { op5: 0.5 },
+    },
+  },
+  plugins: [require("@tailwindcss/forms")],
+};
